@@ -35,7 +35,6 @@ server {
 
 }
 ```
-
 2.进入 /etc/nginx/sites-enabled 删除default
 3.创建软链接 `ln -s /etc/nginx/sites-available/mysite.conf /etc/nginx/sites-enabled/mysite.conf` 
 
@@ -79,6 +78,7 @@ daemonize=/root/myweb/uwsgis/nginx_test.log
 └── static                                                   #静态文件目录
     └── aaa.txt
 ```
+
 ## 开启服务
 1.`uwsgi --ini /root/myweb/uwsgis/mysite.ini`
 2.`service nginx start`
@@ -88,3 +88,4 @@ daemonize=/root/myweb/uwsgis/nginx_test.log
 1.在改变了django项目中的某些东西后必须重启nginx服务（`service nginx restart`）
 2.如果访问不到静态文件，将 /etc/nginx/nginx.conf 中第一行改为`user root;`然后重启服务。
 3.参考视频  <https://www.bilibili.com/video/av31456425/>
+4.修改django内容后需要杀死uwsgi进程然后在重启uwsgi。
